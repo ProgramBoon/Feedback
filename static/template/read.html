@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>W2UI Demo: form/8</title>
+    <link rel="stylesheet" type="text/css" href="w2ui-1.5.css"/>
+    <script language="JavaScript" src="w2ui-1.5.js"></script>
+</head>
+<body>
+
+<br>
+<button class="w2ui-btn" onclick="openPopup()">Open Form in a Popup</button>
+<br><br><br>
+
+<script type="module">
+import { w2form, query, w2ui, w2popup } from 'https://rawgit.com/vitmalina/w2ui/master/dist/w2ui.es6.min.js'
+
+
+
+
+
+window.openPopup = function() {
+    if (!w2ui.foo) {
+        new w2form({
+            name: 'foo',
+            url: '/checkrand/',
+            style: 'border: 0px; background-color: transparent;',
+            fields: [
+                { field: 'first_name', type: 'text', required: true, html: { label: 'First Name' } }
+               
+            ],
+            actions: {
+                "save": function (target, data) { this.save(); },
+                "reset": function (target, data) { this.clear(); }
+            
+            }
+        });
+    }
+
+
+    w2popup.open({
+        title   : 'Form in a Popup',
+        body    : '<div id="form" style="width: 100%; height: 100%;"></div>',
+        style   : 'padding: 15px 0px 0px 0px',
+        width   : 500,
+        height  : 280,
+        showMax : true,
+        
+    })
+    .then((event) => {
+        w2ui.foo.render('#form')
+    });
+}
+</script>
+
+</body>
+</html>

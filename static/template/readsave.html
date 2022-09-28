@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>W2UI Demo: form/3</title>
+    <script
+			  src="https://code.jquery.com/jquery-3.6.1.min.js"
+			  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+			  crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="w2ui-1.5.css"/>
+    <script language="JavaScript" src="w2ui-1.5.js"></script>
+</head>
+<body>
+    <button class="w2ui-btn" onclick="showPrompt()">Prompt 1.5+</button>
+    <div id="grid" style="width: 700px; height: 400px;"></div>
+
+
+</body>
+<script type="module">
+import { w2alert, w2confirm, w2prompt, w2utils } from 'https://rawgit.com/vitmalina/w2ui/master/dist/w2ui.es6.min.js'
+window.showPrompt = function() {
+    w2prompt({
+        title: w2utils.lang('Notification'),
+        width: 400,
+        height: 200,
+        label: 'Enter',
+        value: 'a',
+        url: '/checkrand/' ,
+        attrs: 'style="width: 200px" placeholder="Type here..."',
+        btn_ok: {
+            text: 'Ok',
+            class: 'ok-class',
+            style: 'color: green'
+        },
+        btn_cancel: {
+            text: 'Cancel',
+            class: 'ok-class'
+        },
+    })
+    .ok((event) => {
+        console.log('ok, value=', event.detail.value)
+
+    })
+    .cancel((event) =>{
+        console.save(event.detail.value)
+    })
+    
+}
+
+
+
+</script>
+
+<script type="module">
+import { w2grid } from 'https://rawgit.com/vitmalina/w2ui/master/dist/w2ui.es6.min.js'
+
+let grid = new w2grid({
+    name: 'grid',
+    box: '#grid',
+    columns: [
+        { field: 'lname', text: 'Last Name', size: '30%' },
+        { field: 'fname', text: 'First Name', size: '30%' },
+        { field: 'email', text: 'Email', size: '40%' },
+        { field: 'sdate', text: 'Start Date', size: '90px' }
+    ],
+    records: [
+        { recid: 1, fname: 'John', lname: 'Doe', email: 'jdoe@gmail.com', sdate: '4/3/2012', w2ui: { children: [] }},
+        { recid: 2, fname: 'Stuart', lname: 'Motzart', email: 'jdoe@gmail.com', sdate: '4/3/2012',
+            w2ui: {
+                children: [
+                    { recid: 24, fname: 'Jin', lname: 'Franson', email: 'jdoe@gmail.com', sdate: '4/3/2012' }
+                ]
+            }
+        },
+        
+        { recid: 8, fname: 'Thomas', lname: 'Bahh', email: 'jdoe@gmail.com', sdate: '4/3/2012', w2ui: { children: [] } }
+    ]
+})
+</script>
+
+
+</html>
+

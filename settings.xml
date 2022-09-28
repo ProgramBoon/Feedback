@@ -1,0 +1,13 @@
+<Settings>
+<DatabaseHost>localhost</DatabaseHost>
+<Database>feedback</Database>
+<DatabaseUser>feedback_user</DatabaseUser>
+<DatabasePassword>qwerty2000</DatabasePassword>
+
+<MailPetition>petition@altavto.com</MailPetition>
+<MailAdmin>administration@altavto.com</MailAdmin>
+<MailPassword>Re38sX3</MailPassword>
+<MailHost>smtp.altavto.com</MailHost>
+<MailPort>587</MailPort>
+
+</Settings>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>W2UI Demo: form/3</title>
+    <script
+			  src="https://code.jquery.com/jquery-3.6.1.min.js"
+			  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+			  crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="w2ui-1.5.css"/>
+    <script language="JavaScript" src="w2ui-1.5.js"></script>
+</head>
+<body>
+    <div id="myForm" style="width: 600px"></div>
+</body>
+<script>
+$(function () {
+    $('#myForm').w2form({
+        name   : 'myForm',
+        url: '/post/',
+        fields : [
+            { name: 'Theme', type: 'text'},
+            { name: 'Message',  type: 'text'},
+            { name: 'Files',   type: 'file'}
+        ],
+              
+
+        actions: {
+            reset: function () {
+                this.clear();
+            },
+
+            save:function(){
+                this.save(function(data){
+                    w2alert(data.message,'Идентификационный номер диалога');
+        
+            });
+            }
+        }
+    });
+
+
+});
+
+
+</script>
+
+
+</html>
+
